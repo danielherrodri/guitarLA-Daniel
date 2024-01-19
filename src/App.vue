@@ -1,11 +1,14 @@
 <script setup>
-
+const hola = 'Hola Mundo'
 </script>
 
 <template>
-  <RouterView />
+  <h1>{{hola}}</h1>
 </template>
 
-<style scoped>
-
+<style>
+h1 {
+  text-transform: uppercase;
+  color: wheat;
+}
 </style>
