@@ -1,8 +1,17 @@
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
 import { db } from './data/guitarras'
-const state = reactive({ guitarras: db })
-console.log(state.guitarras)
+
+//Para datos agrupados, cuando sea un objeto
+const state = reactive({ guitarras: [] })
+
+//Para valores como bolean, string, etc.
+const guitarras = ref([])
+
+onMounted(() => {
+  guitarras.value = db
+  state.guitarras = db
+})
 </script>
 
 <template>
