@@ -23,17 +23,25 @@ const agregarCarrito = (guitarra) => {
   }
 }
 
-const decrementarCantidad=()=>{
-  
+const decrementarCantidad = (id) => {
+  const index = carrito.value.findIndex((producto) => producto.id === id)
+  if( carrito.value[index].cantidad <= 1) return
+  carrito.value[index].cantidad--
 }
 
-const incrementarCantidad=()=>{
-
+const incrementarCantidad = (id) => {
+  const index = carrito.value.findIndex((producto) => producto.id === id)
+  if( carrito.value[index].cantidad >= 5) return
+  carrito.value[index].cantidad++ 
 }
 </script>
 
 <template>
-  <Header :carrito="carrito" @incrementar-cantidad="incrementarCantidad" @decrementar-cantidad="decrementarCantidad" />
+  <Header
+    :carrito="carrito"
+    @incrementar-cantidad="incrementarCantidad"
+    @decrementar-cantidad="decrementarCantidad"
+  />
   <main class="container-xl mt-5">
     <h2 class="text-center">Nuestra Colección</h2>
 
