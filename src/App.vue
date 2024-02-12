@@ -36,6 +36,11 @@ const incrementarCantidad = (id) => {
   if( carrito.value[index].cantidad >= 5) return
   carrito.value[index].cantidad++ 
 }
+
+const eliminarProducto = (id) =>{
+  carrito.value = carrito.value.filter( producto => producto.id != id)
+}
+
 </script>
 
 <template>
@@ -45,6 +50,7 @@ const incrementarCantidad = (id) => {
     @agregar-carrito="agregarCarrito"
     @incrementar-cantidad="incrementarCantidad"
     @decrementar-cantidad="decrementarCantidad"
+    @eliminar-producto="eliminarProducto"
   />
   <main class="container-xl mt-5">
     <h2 class="text-center">Nuestra Colección</h2>
