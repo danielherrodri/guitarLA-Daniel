@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { db } from './data/guitarras'
 import Guitarra from './components/Guitarra.vue'
 import Header from './components/Header.vue'
@@ -9,6 +9,16 @@ import Footer from './components/Footer.vue'
 const guitarras = ref([])
 const guitarra = ref({})
 const carrito = ref([])
+
+watch(
+  carrito,
+  () => {
+    guardarLocalStorage()
+  },
+  {
+    deep: true
+  }
+)
 
 onMounted(() => {
   guitarras.value = db
@@ -31,7 +41,6 @@ const agregarCarrito = (guitarra) => {
     guitarra.cantidad = 1
     carrito.value.push(guitarra)
   }
-  guardarLocalStorage()
 }
 
 const decrementarCantidad = (id) => {
